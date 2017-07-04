@@ -52,12 +52,12 @@ namespace SqliteMemoryTest
                     _db.Update(foo);
                     Log("Update", threadId);
 
-                    var items = _db.Select(DateTime.UtcNow.AddMinutes(-1));
+                    var items = _db.Select(DateTime.UtcNow.AddMinutes(-1)).ToList();
                     Log("Select", threadId);
 
                     if (random.Next(100) == 1)
                     {
-                        _db.Delete(foo.Id);
+                        _db.Delete(items.First().Id);
                         Log("Delete", threadId);
                     }
                 }
