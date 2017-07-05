@@ -64,7 +64,7 @@ namespace SqliteMemoryTest
             }
             catch (Exception err)
             {
-                Log(err.ToString(), threadId);
+                LogError(err.ToString(), threadId);
             }
         }
 
@@ -79,6 +79,11 @@ namespace SqliteMemoryTest
         private static void Log(string msg, int threadId)
         {
             Console.WriteLine($"{DateTime.Now} [{threadId}] - {msg}");
+        }
+
+        private static void LogError(string msg, int threadId)
+        {
+            Console.Error.WriteLine($"{DateTime.Now} [{threadId}] - {msg}");
         }
     }
 
